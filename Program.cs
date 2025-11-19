@@ -1,4 +1,6 @@
 using GymSystem.Api.Data;
+using GymSystem.Api.Repository.Implementation;
+using GymSystem.Api.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<GymContext>(options =>
     throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
 var app = builder.Build();
+
+builder.Services.AddScoped<IPartnerRepository, PartnerRepository>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
