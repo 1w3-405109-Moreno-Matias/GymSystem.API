@@ -2,7 +2,7 @@
 {
     public class Partner
     {
-        public int IdPartner { get; set; }
+        public int PartnerId { get; set; }
         public string Name { get; set; }
         public string LastName{ get; set; }
         public int DocumentNumber { get; set; }
