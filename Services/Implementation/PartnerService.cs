@@ -13,22 +13,22 @@ namespace GymSystem.Api.Services.Implementation
         }
         public bool Add(Partner newPartner)
         {
-            throw new NotImplementedException();
+            return _repository.Add(newPartner);
         }
 
         public List<Partner> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetALL();
         }
 
         public Partner GetByNumberDocument(int numberDocument)
         {
-            throw new NotImplementedException();
+            return _repository.GetByNumberDocument(numberDocument);
         }
 
         public bool Update(Partner upDatePartner, int numberDocument)
         {
-            throw new NotImplementedException();
+            return _repository.Update(upDatePartner, numberDocument);
         }
     }
 }
