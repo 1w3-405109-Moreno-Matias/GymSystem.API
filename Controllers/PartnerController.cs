@@ -55,7 +55,7 @@ namespace GymSystem.Api.Controllers
                 PlanId = newPartnerDto.PlanId
             };
 
-            var success = _service.Add(newPartner);
+            var success = _service.CreatePartner(newPartner);
 
             if (!success)
                 return BadRequest("No se pudo crear el socio.");
@@ -70,7 +70,7 @@ namespace GymSystem.Api.Controllers
             if(updatePartner == null)
                 return BadRequest();
 
-            var success = _service.Update(updatePartner, id);
+            var success = _service.UpdatePartner(updatePartner, id);
 
             if (!success)
                 return NotFound();

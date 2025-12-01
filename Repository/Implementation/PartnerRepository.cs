@@ -12,7 +12,7 @@ namespace GymSystem.Api.Repository.Implementation
         {
             _dbContext = dbContext;
         }
-        public bool Add(Partner AddPartner)
+        public bool CreatePartner(Partner AddPartner)
         {
             _dbContext.Partners.Add(AddPartner);
             return _dbContext.SaveChanges() > 0;
@@ -25,7 +25,7 @@ namespace GymSystem.Api.Repository.Implementation
         {
             return _dbContext.Partners.FirstOrDefault(p => p.DocumentNumber == partnerNumberDocument);
         }
-        public bool Update(Partner UpdatePartner, int numberDocument)
+        public bool UpdatePartner(Partner UpdatePartner, int numberDocument)
         {
             var exist = GetByNumberDocument(numberDocument);
             if(exist == null)

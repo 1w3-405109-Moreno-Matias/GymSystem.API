@@ -11,9 +11,9 @@ namespace GymSystem.Api.Services.Implementation
         {
             _repository = repository;
         }
-        public bool Add(Partner newPartner)
+        public bool CreatePartner(Partner newPartner)
         {
-            return _repository.Add(newPartner);
+            return _repository.CreatePartner(newPartner);
         }
 
         public List<Partner> GetAll()
@@ -26,9 +26,9 @@ namespace GymSystem.Api.Services.Implementation
             return _repository.GetByNumberDocument(numberDocument);
         }
 
-        public bool Update(Partner upDatePartner, int numberDocument)
+        public bool UpdatePartner(Partner upDatePartner, int numberDocument)
         {
-            return _repository.Update(upDatePartner, numberDocument);
+            return _repository.UpdatePartner(upDatePartner, numberDocument);
         }
     }
 }
