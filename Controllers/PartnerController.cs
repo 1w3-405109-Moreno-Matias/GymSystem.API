@@ -49,7 +49,7 @@ namespace GymSystem.Api.Controllers
             var newPartner = new Partner
             {
                 Name = newPartnerDto.Name,
-                LastName = newPartnerDto.Name,
+                LastName = newPartnerDto.LastName,
                 DocumentNumber = newPartnerDto.DocumentNumber,
                 RegistrationDate = newPartnerDto.RegistrationDate,
                 PlanId = newPartnerDto.PlanId
@@ -64,13 +64,20 @@ namespace GymSystem.Api.Controllers
         }
 
         // PUT api/<PartnerController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Partner updatePartner)
+        [HttpPut]
+        public IActionResult Put(int document, [FromBody] PartnerUpDateDto updatePartner)
         {
-            if(updatePartner == null)
-                return BadRequest();
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var success = _service.UpdatePartner(updatePartner, id);
+            var partnerToUpdate = new Partner
+            {
+                Name = updatePartner.Name,
+                LastName = updatePartner.LastName,
+                PlanId = updatePartner.PlanId
+            };
+
+            var success = _service.UpdatePartner(partnerToUpdate, document);
 
             if (!success)
                 return NotFound();

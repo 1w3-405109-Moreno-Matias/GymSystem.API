@@ -32,7 +32,14 @@ namespace GymSystem.Api.Repository.Implementation
             {
                 return false;
             }
-            _dbContext.Partners.Update(UpdatePartner);
+
+            // if (!_dbContext.Plans.Any(p => p.PlanId == updatePartner.PlanId))
+            //     return false;
+
+            exist.Name = UpdatePartner.Name;
+            exist.LastName = UpdatePartner.LastName;
+            exist.PlanId = UpdatePartner.PlanId;
+
             return _dbContext.SaveChanges() > 0;
         }
     }
