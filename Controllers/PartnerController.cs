@@ -1,4 +1,5 @@
-﻿using GymSystem.Api.Models;
+﻿using GymSystem.Api.DTOs;
+using GymSystem.Api.Models;
 using GymSystem.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,14 +41,23 @@ namespace GymSystem.Api.Controllers
 
         // POST api/<PartnerController>
         [HttpPost]
-        public IActionResult Post([FromBody] Partner newPartner)
+        public IActionResult Post([FromBody] PartnerCreateDto newPartnerDto)
         {
-            if (newPartner == null)
-                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var createdPartner = _service.Add(newPartner);
+            var newPartner = new Partner
+            {
+                Name = newPartnerDto.Name,
+                LastName = newPartnerDto.Name,
+                DocumentNumber = newPartnerDto.DocumentNumber,
+                RegistrationDate = newPartnerDto.RegistrationDate,
+                PlanId = newPartnerDto.PlanId
+            };
 
-            if (!createdPartner)
+            var success = _service.Add(newPartner);
+
+            if (!success)
                 return BadRequest("No se pudo crear el socio.");
 
             return CreatedAtAction(nameof(GetByNumberDocumnet), new { id = newPartner.DocumentNumber }, newPartner);
