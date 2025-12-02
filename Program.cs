@@ -21,6 +21,9 @@ builder.Services.AddDbContext<GymContext>(options =>
 builder.Services.AddScoped<IPartnerRepository, PartnerRepository>();
 builder.Services.AddScoped<IPartnerService, PartnerService>();
 
+builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+builder.Services.AddScoped<IPlanService, PlanService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
