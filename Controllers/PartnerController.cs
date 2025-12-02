@@ -1,4 +1,5 @@
 ﻿using GymSystem.Api.DTOs;
+using GymSystem.Api.DTOs.PartnerDtos;
 using GymSystem.Api.Models;
 using GymSystem.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace GymSystem.Api.Controllers
 
         // GET api/<PartnerController>/5
         [HttpGet("{id}")]
-        public IActionResult GetByNumberDocumnet(int document)
+        public IActionResult GetByNumberDocument(int document)
         {
             var partner = _service.GetByNumberDocument(document);
             if (partner == null)
@@ -60,7 +61,7 @@ namespace GymSystem.Api.Controllers
             if (!success)
                 return BadRequest("No se pudo crear el socio.");
 
-            return CreatedAtAction(nameof(GetByNumberDocumnet), new { id = newPartner.DocumentNumber }, newPartner);
+            return CreatedAtAction(nameof(GetByNumberDocument), new { id = newPartner.DocumentNumber }, newPartner);
         }
 
         // PUT api/<PartnerController>/5
