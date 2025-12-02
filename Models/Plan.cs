@@ -10,6 +10,9 @@ namespace GymSystem.Api.Models
 
         [Precision(10, 2)]
         public decimal MonthlyPrice { get; set; }
+
+        public int DurationInDays { get; set; }
+        public bool IsActive { get; set; }
         public ICollection<Partner> Partners { get; set; }
     }
 }
