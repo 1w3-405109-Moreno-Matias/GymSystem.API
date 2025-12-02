@@ -1,4 +1,4 @@
-﻿namespace GymSystem.Api.DTOs
+﻿namespace GymSystem.Api.DTOs.PartnerDtos
 {
     public class PartnerCreateDto
     {
