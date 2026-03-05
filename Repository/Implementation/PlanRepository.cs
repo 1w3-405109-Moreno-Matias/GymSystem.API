@@ -11,9 +11,26 @@ namespace GymSystem.Api.Repository.Implementation
         {
             _dbContext = dbContext;
         }
+
+        public bool CreatePlan(Plan plan)
+        {
+            _dbContext.Add(plan);
+            return _dbContext.SaveChanges() > 0;
+        }
+
         public List<Plan> GetAllPlan()
         {
             return _dbContext.Plans.ToList();
+        }
+
+        public Plan GetPlanById(int planId)
+        {
+            return _dbContext.Plans.Find(planId);
+        }
+
+        public bool UpdatePrice()
+        {
+            return _dbContext.SaveChanges() > 0;
         }
     }
 }
