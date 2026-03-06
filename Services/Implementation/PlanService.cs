@@ -18,6 +18,21 @@ namespace GymSystem.Api.Services.Implementation
             return _repository.CreatePlan(plan);
         }
 
+        public bool DeactivatePlan(int planId)
+        {
+            var existPlan = _repository.GetPlanById(planId);
+
+            if(existPlan == null)
+            {
+                return false;
+            }
+            else
+            {
+                existPlan.IsActive = false;
+                return _repository.DeactivatePlan(planId);
+            }
+        }
+
         public List<PlanDto> GetAllPlan()
         {
             var listPlan = _repository.GetAllPlan();

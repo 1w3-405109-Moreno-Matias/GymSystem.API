@@ -28,7 +28,7 @@ namespace GymSystem.Api.Controllers
         [HttpPost]
         public IActionResult PostPlan([FromBody] PlanDto newPlanDto)
         {
-            if(newPlanDto == null)
+            if (newPlanDto == null)
             {
                 return BadRequest();
             }
@@ -51,13 +51,23 @@ namespace GymSystem.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutPricePlan(int id,[FromBody] UpdatePriceDto updatePricePlanDto) 
+        public IActionResult PutPricePlan(int id, [FromBody] UpdatePriceDto updatePricePlanDto)
         {
             var updated = _service.UpdatePrice(id, updatePricePlanDto);
 
             if (!updated)
                 return NotFound();
 
+            return NoContent();
+        }
+
+        [HttpPatch("{id}/deactivate")]
+
+        public IActionResult DeactivatePlan(int id)
+        {
+            var deactivated = _service.DeactivatePlan(id);
+            if (!deactivated)
+                return NotFound();
             return NoContent();
         }
     }

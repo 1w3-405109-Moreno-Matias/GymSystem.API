@@ -9,5 +9,7 @@ namespace GymSystem.Api.Repository.Interfaces
         bool UpdatePrice();
 
         Plan GetPlanById(int planId);
+
+        bool DeactivatePlan(int planId);
     }
 }

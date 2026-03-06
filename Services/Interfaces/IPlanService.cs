@@ -10,5 +10,6 @@ namespace GymSystem.Api.Services.Interfaces
         bool CreatePlan(Plan plan);
 
         bool UpdatePrice(int id,UpdatePriceDto updatePrice);
+        bool DeactivatePlan(int planId);
     }
 }

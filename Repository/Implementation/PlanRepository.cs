@@ -18,6 +18,11 @@ namespace GymSystem.Api.Repository.Implementation
             return _dbContext.SaveChanges() > 0;
         }
 
+        public bool DeactivatePlan(int planId)
+        {
+            return _dbContext.SaveChanges() > 0;
+        }
+
         public List<Plan> GetAllPlan()
         {
             return _dbContext.Plans.ToList();
